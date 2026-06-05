@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Pollution - CleanBD</title>
+</head>
+
+<body style="
+    margin:0;
+    font-family:Arial;
+    background:#eef7ee;
+">
+
+<!-- Navbar -->
+<div style="
+    background:#1b5e20;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+">
+
+    <h1 style="margin:0;">🌍 CleanBD</h1>
+
+    <div>
+        <a href="/" style="
+            color:white;
+            text-decoration:none;
+            margin-right:20px;
+        ">
+            Home
+        </a>
+
+        <a href="/report" style="
+            color:white;
+            text-decoration:none;
+            margin-right:20px;
+        ">
+            Report
+        </a>
+
+        <a href="/dashboard" style="
+            color:white;
+            text-decoration:none;
+        ">
+            Dashboard
+        </a>
+        <a href="/map" style="color:white; text-decoration:none; margin-right:20px;">Map</a>
+    </div>
+
+</div>
+
+<!-- Form Card -->
+<div style="
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+">
+
+<div style="
+    background:white;
+    width:550px;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+">
+
+    <h1 style="
+        text-align:center;
+        color:#1b5e20;
+        margin-bottom:30px;
+    ">
+        📸 Report Pollution
+    </h1>
+
+<form action="/submit" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="lat" id="lat">
+    <input type="hidden" name="lng" id="lng">
+    <label style="font-size:18px;">
+        Upload Pollution Image
+    </label>
+
+    <br><br>
+
+    <input
+        type="file"
+        name="image"
+        style="
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:10px;
+        "
+    >
+
+    <br><br>
+
+    <label style="font-size:18px;">
+        Pollution Type
+    </label>
+
+    <br><br>
+
+    <select
+        name="pollution_type"
+        style="
+            width:100%;
+            padding:15px;
+            border-radius:10px;
+            border:2px solid #ddd;
+            font-size:16px;
+        "
+    >
+        <option>Plastic Waste</option>
+        <option>Garbage</option>
+        <option>Blocked Drain</option>
+        <option>Water Pollution</option>
+    </select>
+
+    <br><br>
+
+    <label style="font-size:18px;">
+        Description
+    </label>
+
+    <br><br>
+
+    <textarea
+        name="description"
+        rows="5"
+        placeholder="Describe the issue..."
+        style="
+            width:100%;
+            border-radius:10px;
+            border:2px solid #ddd;
+            padding:15px;
+            font-size:16px;
+        "
+    ></textarea>
+
+    <br><br>
+
+    <button style="
+        width:100%;
+        background:#2e7d32;
+        color:white;
+        border:none;
+        padding:18px;
+        border-radius:12px;
+        font-size:18px;
+        cursor:pointer;
+    ">
+        Submit Report 🚀
+    </button>
+
+</form>
+
+</div>
+</div>
+<script>
+
+if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+        document.getElementById("lat").value =
+        position.coords.latitude;
+
+        document.getElementById("lng").value =
+        position.coords.longitude;
+
+        console.log("Location captured");
+
+    });
+
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanBD Dashboard</title>
+</head>
+
+<body style="
+    margin:0;
+    font-family:Arial;
+    background:#eef7ee;
+">
+<div style="
+    background:#1b5e20;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+">
+
+    <h1 style="margin:0;">🌍 CleanBD Dashboard</h1>
+
+    <div>
+        <a href="/" style="color:white; text-decoration:none; margin-right:15px;">Home</a>
+
+        <a href="/report" style="color:white; text-decoration:none; margin-right:15px;">Report</a>
+
+        <a href="/dashboard" style="color:white; text-decoration:none; margin-right:15px;">Dashboard</a>
+
+        <a href="/map" style="color:white; text-decoration:none;">Map</a>
+    </div>
+
+</div>
+
+<div style="
+    background:#1b5e20;
+    color:white;
+    padding:20px;
+    text-align:center;
+">
+    <h1>🌍 CleanBD Dashboard</h1>
+</div>
+
+<div style="
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+">
+
+<div style="
+    background:white;
+    padding:20px;
+    width:250px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+">
+    <h2>Total Reports</h2>
+    <h1>{{ reports|length }}</h1>
+</div>
+
+</div>
+
+<div style="
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    padding:40px;
+">
+
+{% for report in reports %}
+
+<div style="
+    background:white;
+    width:320px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+">
+
+    <img
+        src="{{ url_for('static', filename='../uploads/' + report[1]) }}"
+        style="
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        "
+    >
+
+    <div style="padding:20px;">
+
+        <h2 style="color:#1b5e20;">
+            {{ report[2] }}
+        </h2>
+
+        <p style="color:gray;">
+            {{ report[3] }}
+        </p>
+        <p>Lat: {{ report[4] }}</p>
+        <p>Lng: {{ report[5] }}</p>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>
