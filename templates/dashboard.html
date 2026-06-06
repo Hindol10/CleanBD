@@ -81,14 +81,14 @@
 ">
 
     <img
-        src="{{ url_for('static', filename='../uploads/' + report[1]) }}"
-        style="
-            width:100%;
-            height:220px;
-            object-fit:cover;
-        "
+    src="{{ url_for('uploaded_file', filename=report[1]) }}"
+    style="
+        width:100%;
+        height:220px;
+        object-fit:cover;
+    "
     >
-
+    <p>{{ report[1] }}</p>
     <div style="padding:20px;">
 
         <h2 style="color:#1b5e20;">

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import sqlite3
 import os
 import random
@@ -115,5 +115,9 @@ def map_page():
 
     return render_template("map.html", reports=reports)
 
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
