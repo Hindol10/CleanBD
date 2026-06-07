@@ -1,125 +1,225 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CleanBD</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background:#f5f7f5;
+        }
+
+        nav{
+            background:#1b5e20;
+            padding:15px 8%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            color:white;
+        }
+
+        nav h2{
+            font-size:28px;
+        }
+
+        nav ul{
+            list-style:none;
+            display:flex;
+            gap:20px;
+        }
+
+        nav ul li a{
+            text-decoration:none;
+            color:white;
+            font-weight:bold;
+        }
+
+        /* HERO SECTION */
+        .hero{
+            position:relative;
+            height:80vh;
+            background:
+            linear-gradient(rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)),
+            url('https://images.unsplash.com/photo-1621451537084-482c73073a0f?q=80&w=1400');
+            background-size:cover;
+            background-position:center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:white;
+            padding:20px;
+        }
+
+        .hero-content{
+            max-width:800px;
+        }
+
+        .hero h1{
+            font-size:52px;
+            margin-bottom:15px;
+        }
+
+        .hero p{
+            font-size:20px;
+            margin-bottom:30px;
+            line-height:1.7;
+        }
+
+        .btn{
+            display:inline-block;
+            padding:14px 30px;
+            background:#43a047;
+            color:white;
+            text-decoration:none;
+            border-radius:40px;
+            font-size:18px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            transform:scale(1.05);
+        }
+
+        /* FEATURES */
+        .features{
+            padding:70px 8%;
+            text-align:center;
+        }
+
+        .section-title{
+            font-size:38px;
+            color:#1b5e20;
+            margin-bottom:50px;
+        }
+
+        .card-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:25px;
+        }
+
+        .card{
+            background:white;
+            border-radius:20px;
+            padding:35px 25px;
+            box-shadow:0 6px 18px rgba(0,0,0,0.08);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h3{
+            color:#1b5e20;
+            margin-bottom:15px;
+            font-size:24px;
+        }
+
+        .card p{
+            color:#555;
+            line-height:1.7;
+        }
+
+        @media(max-width:768px){
+
+            .hero{
+                height:70vh;
+            }
+
+            .hero h1{
+                font-size:34px;
+            }
+
+            .hero p{
+                font-size:16px;
+            }
+
+            nav{
+                flex-direction:column;
+                gap:10px;
+            }
+        }
+    </style>
 </head>
 
-<body style="margin:0; font-family:Arial; background:#eef7ee;">
+<body>
 
-    <!-- Navbar -->
-    <div style="
-        background:#1b5e20;
-        color:white;
-        padding:20px;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-    ">
+    <nav>
+        <h2>🌍 CleanBD</h2>
 
-        <h1 style="margin:0;">🌍 CleanBD</h1>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/report">Report</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/map">Map</a></li>
+        </ul>
+    </nav>
 
-        <div>
-            <a href="/" style="color:white; text-decoration:none; margin-right:20px;">Home</a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Smart Waste & Pollution Reporting</h1>
 
-            <a href="/report" style="color:white; text-decoration:none; margin-right:20px;">Report</a>
+            <p>
+                Help make Bangladesh cleaner by reporting
+                plastic waste, garbage, blocked drains,
+                and water pollution in real time.
+            </p>
 
-            <a href="/dashboard" style="color:white; text-decoration:none;">Dashboard</a>
-            <a href="/map" style="color:white; text-decoration:none; margin-right:20px;">Map</a>
-        </div>
-
-    </div>
-
-    <!-- Hero Section -->
-    <div style="
-        text-align:center;
-        padding:100px 20px;
-    ">
-
-        <h1 style="
-            font-size:50px;
-            color:#1b5e20;
-        ">
-            Smart Waste & Pollution Reporting
-        </h1>
-
-        <p style="
-            font-size:22px;
-            color:gray;
-            width:70%;
-            margin:auto;
-            line-height:1.8;
-        ">
-            Help make Bangladesh cleaner by reporting
-            plastic waste, blocked drains, polluted canals,
-            illegal dumping and garbage sites.
-        </p>
-
-        <br>
-
-        <a href="/report">
-
-            <button style="
-                background:#2e7d32;
-                color:white;
-                border:none;
-                padding:18px 35px;
-                border-radius:12px;
-                font-size:20px;
-                cursor:pointer;
-            ">
+            <a href="/report" class="btn">
                 Report Pollution
-            </button>
+            </a>
+        </div>
+    </section>
 
-        </a>
+    <section class="features">
 
-    </div>
+        <h2 class="section-title">
+            What CleanBD Offers
+        </h2>
 
-    <!-- Feature Cards -->
-    <div style="
-        display:flex;
-        justify-content:center;
-        gap:30px;
-        padding:50px;
-        flex-wrap:wrap;
-    ">
+        <div class="card-container">
 
-        <div style="
-            background:white;
-            width:280px;
-            padding:30px;
-            border-radius:20px;
-            text-align:center;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        ">
-            <h2>📸 Report Pollution</h2>
-            <p>Upload images of pollution and waste.</p>
+            <div class="card">
+                <h3>📸 Smart Reporting</h3>
+                <p>
+                    Citizens can instantly report pollution
+                    with image upload and live location.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📍 Heat Map</h3>
+                <p>
+                    Identify pollution hotspots through
+                    interactive maps and location tracking.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Authority Dashboard</h3>
+                <p>
+                    Authorities can monitor reports and
+                    identify high-risk pollution areas.
+                </p>
+            </div>
+
         </div>
 
-        <div style="
-            background:white;
-            width:280px;
-            padding:30px;
-            border-radius:20px;
-            text-align:center;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        ">
-            <h2>🌍 Heat Map</h2>
-            <p>Identify pollution hotspots.</p>
-        </div>
-
-        <div style="
-            background:white;
-            width:280px;
-            padding:30px;
-            border-radius:20px;
-            text-align:center;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        ">
-            <h2>📊 Dashboard</h2>
-            <p>Authorities can monitor reports.</p>
-        </div>
-
-    </div>
+    </section>
 
 </body>
 </html>
