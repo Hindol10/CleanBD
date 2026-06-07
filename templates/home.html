@@ -2,457 +2,432 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CleanBD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CleanBD</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body{
-            background:#f4f7f4;
-            color:#333;
-        }
-
-        /* NAVBAR */
-        nav{
-            background:#1b5e20;
-            padding:18px 8%;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            color:white;
-            position:sticky;
-            top:0;
-            z-index:1000;
-        }
-
-        nav h2{
-            font-size:30px;
-        }
-
-        nav ul{
-            list-style:none;
-            display:flex;
-            gap:25px;
-        }
-
-        nav ul li a{
-            text-decoration:none;
-            color:white;
-            font-weight:bold;
-            transition:0.3s;
-        }
-
-        nav ul li a:hover{
-            color:#c8e6c9;
-        }
-
-        /* HERO */
-        .hero{
-    position: relative;
-    height: 92vh;
-
-    background:
-    linear-gradient(
-    rgba(0,0,0,0.48),
-    rgba(0,0,0,0.48)
-    ),
-
-    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1800');
-
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    overflow: hidden;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
+body{
+    background:#f4f7f4;
+    color:#333;
+}
+
+/* NAVBAR */
+nav{
+    background:#1b5e20;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:28px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    min-height:92vh;
 
     background:
     linear-gradient(
-        to right,
-        rgba(40,40,40,0.55) 0%,
-        rgba(40,40,40,0.45) 50%,
-        rgba(46,125,50,0.15) 100%
-    );
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.45)
+    ),
+    url("{{ url_for('static', filename='images/hero-bg.png') }}");
 
-    z-index:1;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    color:white;
 }
 
 .hero-content{
-    position:relative;
-    z-index:2;
     max-width:900px;
-    padding:20px;
 }
 
 .hero h1{
     font-size:58px;
+    margin-bottom:20px;
     line-height:1.2;
-    margin-bottom:22px;
-    text-shadow:0 4px 18px rgba(0,0,0,0.45);
+    text-shadow:0 5px 20px rgba(0,0,0,0.4);
 }
 
 .hero p{
     font-size:22px;
-    line-height:1.9;
-    max-width:750px;
-    margin:auto;
+    line-height:1.8;
     margin-bottom:35px;
     color:#f2f2f2;
 }
 
 .btn{
     display:inline-block;
-    background:#43a047;
+    padding:16px 35px;
+    background:#2e7d32;
     color:white;
     text-decoration:none;
-    padding:16px 36px;
     border-radius:50px;
-    font-size:20px;
     font-weight:bold;
-    box-shadow:0 8px 25px rgba(67,160,71,0.35);
-    transition:0.3s;
+    transition:.3s;
 }
 
 .btn:hover{
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 }
 
+/* SECTION */
+section{
+    padding:80px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    color:#1b5e20;
+    margin-bottom:50px;
+}
+
+/* FEATURES */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:22px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin:20px 0;
+    color:#1b5e20;
+    font-size:25px;
+}
+
+.card p{
+    line-height:1.8;
+    color:#666;
+}
+
+/* HOW IT WORKS */
+.steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.step{
+    background:white;
+    padding:35px;
+    border-radius:22px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.step h3{
+    margin:15px 0;
+    color:#1b5e20;
+}
+
+/* INFO */
+.info-box{
+    background:white;
+    border-radius:25px;
+    padding:50px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.info-box p{
+    line-height:2;
+    font-size:18px;
+    color:#555;
+}
+
+/* MISSION */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:40px 25px;
+    border-radius:22px;
+}
+
+.stat h2{
+    font-size:38px;
+}
+
+footer{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* MOBILE */
 @media(max-width:768px){
 
+    nav{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
     .hero{
-        height:78vh;
+        min-height:78vh;
     }
 
     .hero h1{
-        font-size:36px;
+        font-size:35px;
     }
 
     .hero p{
         font-size:17px;
     }
+
+    .section-title{
+        font-size:30px;
+    }
+
+    .info-box{
+        padding:30px;
+    }
 }
-
-        /* CARDS */
-        .card-container{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-            gap:25px;
-        }
-
-        .card{
-            background:white;
-            padding:35px 25px;
-            border-radius:20px;
-            text-align:center;
-            box-shadow:0 6px 20px rgba(0,0,0,0.08);
-            transition:0.3s;
-        }
-
-        .card:hover{
-            transform:translateY(-8px);
-        }
-
-        .card h3{
-            color:#1b5e20;
-            margin-bottom:15px;
-            font-size:24px;
-        }
-
-        .card p{
-            color:#666;
-            line-height:1.8;
-        }
-
-        /* HOW IT WORKS */
-        .steps{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-            gap:25px;
-        }
-
-        .step{
-            background:white;
-            border-radius:20px;
-            text-align:center;
-            padding:35px;
-            box-shadow:0 5px 18px rgba(0,0,0,0.08);
-        }
-
-        .step h3{
-            color:#1b5e20;
-            margin:15px 0;
-        }
-
-        /* LEGEND */
-        .legend{
-            background:white;
-            border-radius:20px;
-            padding:35px;
-            box-shadow:0 6px 18px rgba(0,0,0,0.08);
-        }
-
-        .legend-item{
-            display:flex;
-            align-items:center;
-            margin-bottom:15px;
-            font-size:18px;
-        }
-
-        .dot{
-            width:22px;
-            height:22px;
-            border-radius:50%;
-            margin-right:15px;
-        }
-
-        /* WHY */
-        .why{
-            text-align:center;
-            background:#e8f5e9;
-            border-radius:25px;
-            padding:60px 30px;
-        }
-
-        .why p{
-            font-size:19px;
-            line-height:1.9;
-            max-width:900px;
-            margin:auto;
-        }
-
-        /* STATS */
-        .stats{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-            gap:20px;
-        }
-
-        .stat-box{
-            background:#1b5e20;
-            color:white;
-            text-align:center;
-            border-radius:20px;
-            padding:35px;
-        }
-
-        .stat-box h2{
-            font-size:38px;
-        }
-
-        .stat-box p{
-            margin-top:10px;
-        }
-
-        footer{
-            background:#1b5e20;
-            color:white;
-            text-align:center;
-            padding:25px;
-            margin-top:50px;
-        }
-
-        @media(max-width:768px){
-
-            nav{
-                flex-direction:column;
-                gap:12px;
-            }
-
-            nav ul{
-                flex-wrap:wrap;
-                justify-content:center;
-            }
-
-            .hero{
-                height:75vh;
-            }
-
-            .hero h1{
-                font-size:35px;
-            }
-
-            .hero p{
-                font-size:17px;
-            }
-
-            .section-title{
-                font-size:30px;
-            }
-        }
-
-    </style>
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <h2>🌍 CleanBD</h2>
+<nav>
+    <div class="logo">🌍 CleanBD</div>
 
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/report">Report</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/map">Map</a></li>
-        </ul>
-    </nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/report">Report</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/map">Map</a></li>
+    </ul>
+</nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>From Pollution Today, To A Cleaner Tomorrow</h1>
+<section class="hero">
 
-            <p>
-                Help make Bangladesh cleaner by reporting
-                plastic waste, garbage, blocked drains,
-                and water pollution in real time.
-            </p>
+    <div class="hero-content">
 
-            <a href="/report" class="btn">
-                Report Pollution
-            </a>
-        </div>
-    </section>
+        <h1>
+            From Pollution Today, To A Cleaner Tomorrow
+        </h1>
 
-    <section>
-        <h2 class="section-title">What CleanBD Offers</h2>
+        <p>
+            Help make Bangladesh cleaner by reporting
+            plastic waste, blocked drains,
+            garbage and water pollution in real time.
+        </p>
 
-        <div class="card-container">
+        <a href="/report" class="btn">
+            Report Pollution
+        </a>
 
-            <div class="card">
-                <h3>📸 Smart Reporting</h3>
-                <p>Citizens can report pollution with images and GPS location instantly.</p>
-            </div>
+    </div>
 
-            <div class="card">
-                <h3>📍 Smart Heat Map</h3>
-                <p>Identify pollution hotspots using live location-based reports.</p>
-            </div>
+</section>
 
-            <div class="card">
-                <h3>📊 Authority Dashboard</h3>
-                <p>Authorities can monitor pollution reports and identify risky zones.</p>
-            </div>
+<section>
 
-        </div>
-    </section>
+    <h2 class="section-title">
+        What CleanBD Offers
+    </h2>
 
-    <section>
-        <h2 class="section-title">How CleanBD Works</h2>
+    <div class="cards">
 
-        <div class="steps">
-
-            <div class="step">
-                <h2>📸</h2>
-                <h3>Upload Photo</h3>
-                <p>Citizens upload pollution images.</p>
-            </div>
-
-            <div class="step">
-                <h2>📍</h2>
-                <h3>GPS Detection</h3>
-                <p>Location automatically gets detected.</p>
-            </div>
-
-            <div class="step">
-                <h2>📊</h2>
-                <h3>Dashboard Analysis</h3>
-                <p>Authorities analyze pollution hotspots.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section>
-        <h2 class="section-title">Map Legend</h2>
-
-        <div class="legend">
-
-            <div class="legend-item">
-                <div class="dot" style="background:red;"></div>
-                Garbage Pollution
-            </div>
-
-            <div class="legend-item">
-                <div class="dot" style="background:gold;"></div>
-                Plastic Waste
-            </div>
-
-            <div class="legend-item">
-                <div class="dot" style="background:blue;"></div>
-                Water Pollution
-            </div>
-
-            <div class="legend-item">
-                <div class="dot" style="background:green;"></div>
-                Blocked Drain
-            </div>
-
-            <br>
-
-            <h3>🔥 Heatmap Guide</h3>
-            <p>🔴 Red = High Pollution | 🟠 Orange = Medium | 🟡 Yellow = Low</p>
-
-        </div>
-    </section>
-
-    <section>
-        <div class="why">
-            <h2 class="section-title">Why CleanBD Matters</h2>
+        <div class="card">
+            <h3>📸 Smart Reporting</h3>
 
             <p>
-                Bangladesh faces growing waste and pollution challenges.
-                CleanBD helps citizens report pollution in real time
-                while enabling authorities to identify environmental
-                hotspots and take faster action for a cleaner future.
+                Citizens can upload pollution photos
+                with GPS location for quick reporting.
             </p>
         </div>
-    </section>
 
-    <section>
-        <h2 class="section-title">Our Mission</h2>
+        <div class="card">
+            <h3>🗺 Smart Heat Map</h3>
 
-        <div class="stats">
-
-            <div class="stat-box">
-                <h2>4+</h2>
-                <p>Pollution Types</p>
-            </div>
-
-            <div class="stat-box">
-                <h2>24/7</h2>
-                <p>Live Monitoring</p>
-            </div>
-
-            <div class="stat-box">
-                <h2>GPS</h2>
-                <p>Location Tracking</p>
-            </div>
-
-            <div class="stat-box">
-                <h2>AI</h2>
-                <p>Smart Detection</p>
-            </div>
-
+            <p>
+                Identify pollution hotspots
+                and dangerous areas instantly.
+            </p>
         </div>
-    </section>
 
-    <footer>
-        © 2026 CleanBD | Smart Environmental Monitoring Platform
-    </footer>
+        <div class="card">
+            <h3>📊 Authority Dashboard</h3>
+
+            <p>
+                Authorities can monitor reports
+                and take faster action.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">
+        How CleanBD Works
+    </h2>
+
+    <div class="steps">
+
+        <div class="step">
+            <h1>📸</h1>
+            <h3>Upload Report</h3>
+            <p>Citizens upload pollution image.</p>
+        </div>
+
+        <div class="step">
+            <h1>📍</h1>
+            <h3>GPS Detection</h3>
+            <p>Location automatically detected.</p>
+        </div>
+
+        <div class="step">
+            <h1>📊</h1>
+            <h3>Authority Action</h3>
+            <p>Authorities monitor hotspots.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">
+        Pollution In Bangladesh
+    </h2>
+
+    <div class="info-box">
+
+        <p>
+            Bangladesh faces serious environmental
+            challenges including plastic waste,
+            blocked drainage systems, garbage dumping
+            and polluted rivers. These problems
+            increase waterlogging, health risks,
+            environmental damage and unsafe living
+            conditions for communities.
+        </p>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">
+        Why CleanBD Matters
+    </h2>
+
+    <div class="info-box">
+
+        <p>
+            CleanBD helps citizens report pollution
+            in real time while helping authorities
+            identify environmental hotspots through
+            location tracking and heatmap analysis.
+            Together we can build a smarter and
+            cleaner Bangladesh.
+        </p>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">
+        Our Mission
+    </h2>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h2>4+</h2>
+            <p>Pollution Types</p>
+        </div>
+
+        <div class="stat">
+            <h2>24/7</h2>
+            <p>Monitoring</p>
+        </div>
+
+        <div class="stat">
+            <h2>GPS</h2>
+            <p>Location Tracking</p>
+        </div>
+
+        <div class="stat">
+            <h2>AI</h2>
+            <p>Smart Detection</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 CleanBD | Smart Environmental Monitoring Platform
+</footer>
 
 </body>
 </html>
